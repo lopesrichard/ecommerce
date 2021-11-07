@@ -1,0 +1,29 @@
+body {
+  background-color: rgb(241 241 241);
+}
+
+a {
+  text-decoration: none;
+  color: rgb(78, 78, 78);
+}
+
+.top-mobile {
+  height: 60px;
+  box-shadow: 5px 0 5px 5px #dcdcdc;
+}
+
+.menu-container .logo {
+  height: 84px;
+}
+
+.search-box i {
+  margin-left: -30px;
+}
+
+.menu a {
+  margin-right: 20px;
+}
+
+.menu a:hover {
+  color: blue;
+}
