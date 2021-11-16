@@ -41,17 +41,3 @@ main.container {
   font-size: 24px;
   color: gray;
 }
-
-.btn.btn-primary.btn-buy,
-.btn.btn-primary.btn-buy:focus,
-.btn.btn-primary.btn-buy:active {
-  color: white;
-  background-color: black;
-  border: none;
-  box-shadow: none;
-  outline: none;
-}
-
-.btn.btn-primary.btn-buy:hover {
-  background-color: rgb(66, 66, 66);
-}
