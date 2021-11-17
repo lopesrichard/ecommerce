@@ -41,3 +41,23 @@ a {
 .btn.btn-primary:hover {
   background-color: rgb(66, 66, 66);
 }
+
+.menu-mobile .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.profile {
+  text-align: center;
+}
+
+.profile .profile-picture {
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.profile .profile-title {
+  font-weight: bold;
+  font-size: 22px;
+}
