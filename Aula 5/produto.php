@@ -45,13 +45,16 @@ closeConnection($connection);
       <p class="card-discounted-value"><?= money($discounted) ?></p>
       <p class="card-installments">ou 10x de <?= money($discounted / $product['quantidade_parcelas']) ?> sem juros</p>
       <div class="col-12">
-        <fieldset class="mt-4">
-          <label for="quantidade">Quantidade: </label>
-          <input id="quantidade" class="form-control btn-lg" type="number" value="1" min="1" />
-        </fieldset>
-        <a class="btn btn-primary btn-buy btn-lg mt-2 w-100" href="/carrinho.php">
-          Comprar
-        </a>
+        <form method="post" action="/actions/carrinho/add.php">
+          <input id="produto" name="produto" type="hidden" value="<?= $product['id'] ?>" />
+          <fieldset class="mt-4">
+            <label for="quantidade">Quantidade: </label>
+            <input id="quantidade" name="quantidade" class="form-control btn-lg" type="number" value="1" min="1" />
+          </fieldset>
+          <button class="btn btn-primary btn-buy btn-lg mt-2 w-100">
+            Comprar
+          </button>
+        </form>
       </div>
     </div>
   </div>
