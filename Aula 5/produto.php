@@ -1,6 +1,6 @@
 <?php
 
-include 'lib/format.php';
+require_once 'lib/format.php';
 
 $product = [
   'name' => 'Título do Produto',
@@ -55,4 +55,4 @@ $title = 'Produto';
 $style = 'produto';
 $script = 'produto';
 
-include 'base.php';
+require_once 'base.php';

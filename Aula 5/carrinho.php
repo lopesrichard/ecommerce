@@ -1,6 +1,6 @@
 <?php
 
-include 'lib/format.php';
+require_once 'lib/format.php';
 
 $products = [
   ['name' => 'Título do Produto 1', 'rating' => 3, 'value' => 9148, 'discount' => 10, 'installments' => 3, 'qtd' => 1, 'image' => 'product.png', 'delivery' => 'Receba até 10 de Novembro'],
@@ -107,4 +107,4 @@ $title = 'Carrinho';
 $style = 'carrinho';
 $script = 'carrinho';
 
-include 'base.php';
+require_once 'base.php';

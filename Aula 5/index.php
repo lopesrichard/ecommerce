@@ -1,46 +1,16 @@
 <?php
 
-include 'lib/format.php';
+require_once 'lib/format.php';
+require_once 'lib/database.php';
+require_once 'lib/debug.php';
+require_once 'repo/produtos.php';
 
-$hostname = 'localhost';
-$username = 'root';
-$password = null;
-$database = 'ecommerce';
+$connection = getConnection();
 
-$connection = mysqli_connect($hostname, $username, $password, $database);
-
-$resultProdutos = mysqli_query($connection, 'select * from produtos order by desconto desc limit 6');
-
-$produtos = [];
-
-for ($i = 0; $i < $resultProdutos->num_rows; $i++) {
-  $produto = $resultProdutos->fetch_assoc();
-
-  $resultAvaliacoes = mysqli_query($connection, 'select * from avaliacoes where produto_id = ' . $produto['id']);
-
-  $produto['avaliacao'] = 0;
-
-  if (!$resultAvaliacoes->num_rows) {
-    $produtos[] = $produto;
-    continue;
-  }
-
-  $avaliacaoTotalProduto = 0;
-
-  for ($j = 0; $j < $resultAvaliacoes->num_rows; $j++) {
-    $avaliacao = $resultAvaliacoes->fetch_assoc();
-    $avaliacaoTotalProduto += $avaliacao['nota'];
-  }
-
-  $avaliacaoMediaProduto = $avaliacaoTotalProduto / $resultAvaliacoes->num_rows;
-
-  $produto['avaliacao'] = $avaliacaoMediaProduto;
-
-  $produtos[] = $produto;
-}
+$produtosEmOferta = getProdutosEmOferta($connection);
 
 $sections = [
-  'Ofertas' => $produtos,
+  'Ofertas' => $produtosEmOferta,
   // 'Mais Vendidos' => [
   //   ['name' => 'Título do Produto', 'rating' => 2, 'value' => 1702, 'discount' => 24, 'installments' => 10, 'image' => 'product.png'],
   //   ['name' => 'Título do Produto', 'rating' => 4, 'value' => 3555, 'discount' => 23, 'installments' => 10, 'image' => 'product.png'],
@@ -65,7 +35,9 @@ $sections = [
   //   ['name' => 'Título do Produto', 'rating' => 4, 'value' => 4112, 'discount' => 25, 'installments' => 10, 'image' => 'product.png'],
   //   ['name' => 'Título do Produto', 'rating' => 4, 'value' => 3570, 'discount' => 25, 'installments' => 10, 'image' => 'product.png'],
   // ],
-]
+];
+
+closeConnection($connection);
 
 ?>
 
@@ -118,4 +90,4 @@ $title = 'Página Inicial';
 $style = 'index';
 $script = 'index';
 
-include 'base.php';
+require_once 'base.php';

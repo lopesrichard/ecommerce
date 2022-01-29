@@ -14,9 +14,9 @@
 </head>
 
 <body>
-    <?php include 'header.php' ?>
+    <?php require_once 'header.php' ?>
     <?= $content ?>
-    <?php include 'footer.php' ?>
+    <?php require_once 'footer.php' ?>
     <script src="/vendor/bootstrap-5.1.3-dist/js/bootstrap.bundle.js"></script>
     <script src="/js/<?= $script ?>.js"></script>
 </body>
