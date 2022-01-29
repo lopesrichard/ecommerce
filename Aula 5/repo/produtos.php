@@ -3,6 +3,17 @@
 require_once 'lib/database.php';
 require_once 'lib/debug.php';
 
+function getProdutoByUrl($connection, $url) {
+    $result = mysqli_query($connection, "select * from produtos where url = '$url'");
+    $produto = fetchOne($result);
+
+    if ($produto != null) {
+        $produto['avaliacao'] = getAvaliacaoMedia($connection, $produto['id']);
+    }
+
+    return $produto;
+}
+
 function getProdutos($connection, $query) {
     $result = mysqli_query($connection, $query);
     $produtos = fetchMany($result);

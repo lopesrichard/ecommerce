@@ -34,7 +34,7 @@ closeConnection($connection);
       <div class="row g-2">
         <?php foreach ($produtos as $produto) : ?>
           <div class="col-12 col-lg-4">
-            <a href="produto.php">
+            <a href="produto.php?ref=<?= $produto['url'] ?>">
               <div class="card p-3">
                 <div class="row">
                   <div class="col-4">

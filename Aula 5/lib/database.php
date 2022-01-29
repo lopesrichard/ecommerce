@@ -8,6 +8,10 @@ function closeConnection($connection) {
     mysqli_close($connection);
 }
 
+function fetchOne($result) {
+    return $result->fetch_assoc();
+}
+
 function fetchMany($result) {
     $data = [];
 
